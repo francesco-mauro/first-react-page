@@ -34,6 +34,7 @@ function CoreConcept({title, description, image}) {
   </li>;
 }
 
+
 function App() {
   return (
     <div>          
