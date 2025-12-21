@@ -9,10 +9,12 @@ import TabButton from "./components/TabButton.jsx";
 
 
 function App() {
-      function handleSelect() {
-        console.log("Hello World! - selected");
-        
-    }
+  function handleSelect(selectedButton) {
+    //Selecteed button should be a string "components", "jsx", "props", "state"
+    //selectedButton => "components", "jsx", "props", "state"
+    console.log("selected button:", selectedButton);
+
+  }
 
 
   return (
@@ -35,11 +37,12 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={handleSelect}> Components </TabButton>
-            <TabButton> JSX </TabButton>
-            <TabButton> Props </TabButton>
-            <TabButton> State </TabButton>
+            <TabButton onSelect={() => handleSelect("components")}> Components </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}> JSX </TabButton>
+            <TabButton onSelect={() => handleSelect("props")}> Props </TabButton>
+            <TabButton onSelect={() => handleSelect("state")}> State </TabButton>
           </menu>
+          {/* if check here */}
           Dynamic Content
 
         </section>
