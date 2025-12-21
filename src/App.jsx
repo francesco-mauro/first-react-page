@@ -1,3 +1,8 @@
+// Importa l'hook useState da React.
+// useState permette di aggiungere e gestire uno "stato" nei componenti funzione.
+// Quando lo stato cambia, il componente viene ri-renderizzato con i nuovi dati.
+import {useState} from 'react';
+
 // Immmage import statement
 import reactImg from './assets/react-core-concepts.png';
 import componentImg from './assets/components.png';
@@ -9,12 +14,20 @@ import TabButton from "./components/TabButton.jsx";
 
 
 function App() {
+  // Crea una variabile di stato "selectedTopic" e la funzione per aggiornarla "setSelectedTopic".
+  // Il valore iniziale è "Please click a button!". Quando chiami setSelectedTopic, React aggiorna lo stato e ri-renderizza il componente.
+  const [selectedTopic, setSelectedTopic] = useState("Please click a button!");
+
   function handleSelect(selectedButton) {
     //Selecteed button should be a string "components", "jsx", "props", "state"
     //selectedButton => "components", "jsx", "props", "state"
-    console.log("selected button:", selectedButton);
+    setSelectedTopic(selectedButton);
+    console.log("selected button:", selectedTopic);
 
   }
+
+  console.log("APP COMPONENT RENDERING");
+  
 
 
   return (
@@ -43,7 +56,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}> State </TabButton>
           </menu>
           {/* if check here */}
-          Dynamic Content
+          {selectedTopic}
 
         </section>
 
