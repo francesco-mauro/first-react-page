@@ -1,7 +1,7 @@
 // Importa l'hook useState da React.
 // useState permette di aggiungere e gestire uno "stato" nei componenti funzione.
 // Quando lo stato cambia, il componente viene ri-renderizzato con i nuovi dati.
-import {useState} from 'react';
+import { useState } from 'react';
 
 // Immmage import statement
 import reactImg from './assets/react-core-concepts.png';
@@ -17,7 +17,7 @@ import { EXAMPLES } from './data';
 function App() {
   // Crea una variabile di stato "selectedTopic" e la funzione per aggiornarla "setSelectedTopic".
   // Il valore iniziale è "Please click a button!". Quando chiami setSelectedTopic, React aggiorna lo stato e ri-renderizza il componente.
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState("");
 
   function handleSelect(selectedButton) {
     //Selecteed button should be a string "components", "jsx", "props", "state"
@@ -28,8 +28,20 @@ function App() {
   }
 
   console.log("APP COMPONENT RENDERING");
-  
 
+  let tabContent = <p>Please select a topic.</p>
+
+  if (selectedTopic) {
+    tabContent = <div id="tab-content">
+      <h3> {EXAMPLES[selectedTopic].title}</h3>
+      <p>{EXAMPLES[selectedTopic].description}</p>
+      <pre>
+        <code>
+          {EXAMPLES[selectedTopic].code}
+        </code>
+      </pre>
+    </div>
+  }
 
   return (
     <div>
@@ -56,16 +68,33 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}> Props </TabButton>
             <TabButton onSelect={() => handleSelect("state")}> State </TabButton>
           </menu>
-          <div id="tab-content"> 
+          {/* Approch 1 to dynamic statements */}
+          {/* {!selectedTopic ? <p>Please select a topic</p> : <div id="tab-content">
             <h3> {EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
               <code>
-                {EXAMPLES[selectedTopic].code}  
+                {EXAMPLES[selectedTopic].code}
               </code>
             </pre>
-          </div>
-          {selectedTopic}
+          </div>} */}
+
+          {/* Approch 2 to dynamic statements */}
+          {/* {selectedTopic ? <div id="tab-content">
+            <h3> {EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div> : null}  */}
+
+          {/* Approch 3 to dynamic statements */}
+          {tabContent}
+
+
+
 
         </section>
 
