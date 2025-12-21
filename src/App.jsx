@@ -11,12 +11,13 @@ import Header from './components/Header/Header.jsx';
 // import { Header } from './components/Header';
 import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from "./components/TabButton.jsx";
+import { EXAMPLES } from './data';
 
 
 function App() {
   // Crea una variabile di stato "selectedTopic" e la funzione per aggiornarla "setSelectedTopic".
   // Il valore iniziale è "Please click a button!". Quando chiami setSelectedTopic, React aggiorna lo stato e ri-renderizza il componente.
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button!");
+  const [selectedTopic, setSelectedTopic] = useState("components");
 
   function handleSelect(selectedButton) {
     //Selecteed button should be a string "components", "jsx", "props", "state"
@@ -55,7 +56,15 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}> Props </TabButton>
             <TabButton onSelect={() => handleSelect("state")}> State </TabButton>
           </menu>
-          {/* if check here */}
+          <div id="tab-content"> 
+            <h3> {EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}  
+              </code>
+            </pre>
+          </div>
           {selectedTopic}
 
         </section>
