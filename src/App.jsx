@@ -19,9 +19,10 @@ function App() {
     <>
       <Header />
       <main>
-        <CoreConcepts />
-        <Examples />
 
+        <CoreConcepts />
+         
+        <Examples />
 
       </main>
     </>
