@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { EXAMPLES } from '../data.js';
 import TabButton from './TabButton.jsx';
 import Section from './Section.jsx';
+import Tabs from './Tabs.jsx';
 
 
 export default function Examples() {
@@ -32,16 +33,23 @@ export default function Examples() {
     </div>
   }
 
-    return (
-        <Section title="Examples" id='examples'>
-            <menu>
-                <TabButton isSelected={selectedTopic === "components"} onClick={() => handleSelect("components")}> Components </TabButton>
-                <TabButton isSelected={selectedTopic === "jsx"} onClick={() => handleSelect("jsx")}> JSX </TabButton>
-                <TabButton isSelected={selectedTopic === "props"} onClick={() => handleSelect("props")}> Props </TabButton>
-                <TabButton isSelected={selectedTopic === "state"} onClick={() => handleSelect("state")}> State </TabButton>
-            </menu>
-            {/* Approch 1 to dynamic statements */}
-            {/* {!selectedTopic ? <p>Please select a topic</p> : <div id="tab-content">
+  return (
+    <Section title="Examples" id='examples'>
+      <Tabs buttons={
+        <>
+          <TabButton isSelected={selectedTopic === "components"} onClick={() => handleSelect("components")}> Components </TabButton>
+          <TabButton isSelected={selectedTopic === "jsx"} onClick={() => handleSelect("jsx")}> JSX </TabButton>
+          <TabButton isSelected={selectedTopic === "props"} onClick={() => handleSelect("props")}> Props </TabButton>
+          <TabButton isSelected={selectedTopic === "state"} onClick={() => handleSelect("state")}> State </TabButton>
+        </>
+      }>
+        {tabContent}
+      </Tabs>
+      <menu>
+
+      </menu>
+      {/* Approch 1 to dynamic statements */}
+      {/* {!selectedTopic ? <p>Please select a topic</p> : <div id="tab-content">
             <h3> {EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
@@ -51,8 +59,8 @@ export default function Examples() {
             </pre>    
           </div>} */}
 
-            {/* Approch 2 to dynamic statements */}
-            {/* {selectedTopic ? <div id="tab-content">
+      {/* Approch 2 to dynamic statements */}
+      {/* {selectedTopic ? <div id="tab-content">
             <h3> {EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].description}</p>
             <pre>
@@ -62,8 +70,8 @@ export default function Examples() {
             </pre>
           </div> : null}  */}
 
-            {/* Approch 3 to dynamic statements */}
-            {tabContent}
+      {/* Approch 3 to dynamic statements */}
+      {tabContent}
 
-        </Section>)
+    </Section>)
 }
