@@ -3,7 +3,7 @@
 // Quando lo stato cambia, il componente viene ri-renderizzato con i nuovi dati.
 // Fragment permette di raggruppare più elementi JSX senza aggiungere nodi extra al DOM.
 // Utile quando vuoi restituire più elementi da un componente senza usare un <div> o altro elemento HTML.
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 
 // Immmage import statement
 import reactImg from './assets/react-core-concepts.png';
@@ -46,7 +46,7 @@ function App() {
   }
 
   return (
-    <Fragment>
+    <>
       <Header />
       <main>
         <section id="core-concepts">
@@ -102,7 +102,7 @@ function App() {
         </section>
 
       </main>
-    </Fragment>
+    </>
   );
 }
 
