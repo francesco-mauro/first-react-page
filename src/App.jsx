@@ -1,7 +1,9 @@
-// Importa l'hook useState da React.
+// Importa gli hook useState e Fragment da React.
 // useState permette di aggiungere e gestire uno "stato" nei componenti funzione.
 // Quando lo stato cambia, il componente viene ri-renderizzato con i nuovi dati.
-import { useState } from 'react';
+// Fragment permette di raggruppare più elementi JSX senza aggiungere nodi extra al DOM.
+// Utile quando vuoi restituire più elementi da un componente senza usare un <div> o altro elemento HTML.
+import { useState, Fragment } from 'react';
 
 // Immmage import statement
 import reactImg from './assets/react-core-concepts.png';
@@ -44,7 +46,7 @@ function App() {
   }
 
   return (
-    <div>
+    <Fragment>
       <Header />
       <main>
         <section id="core-concepts">
@@ -100,7 +102,7 @@ function App() {
         </section>
 
       </main>
-    </div>
+    </Fragment>
   );
 }
 
